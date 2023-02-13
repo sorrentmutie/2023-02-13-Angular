@@ -1,0 +1,13 @@
+<app-products-header></app-products-header>
+<p>{{title}}</p>
+<div *ngIf="products && products.length > 0; else noProducts">
+    <p>Ci sono {{products.length}} prodotti</p>
+    <app-products-table [products]="products"  (emitter)="onDetails($event)" ></app-products-table>
+</div>
+
+<app-products-table [products]="productsNotInStock"
+  (emitter)="onRemove($event)"> </app-products-table>
+
+<ng-template #noProducts>
+    <p>Non ci sono prodotti disponibili</p>
+</ng-template>

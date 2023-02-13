@@ -1,0 +1,35 @@
+<table class="table table-bordered table-striped table-hover">
+  <thead>
+    <tr>
+        <th> Id </th>
+        <th> Nome </th>
+        <th> Prezzo</th>
+        <th> Immagine</th>
+        <th> Data Arrivo</th>
+        <th> Indirizzo </th>
+        <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+        <td>{{product.id}}</td>
+        <td>{{product.name | formatProductName | uppercase}}</td>
+        <td>{{product.price | currency: 'EUR'}}</td>
+        <td>
+            <img src="{{product.picture}}">
+        </td>
+        <td> {{product.arrival | date: 'dd/MM/yyyy'}}</td>
+        <td>
+          {{product.address | formatAddress}}
+        </td>
+        <td>
+            <button (click)="showDetails(product)"  class="btn btn-info">
+                Dettagli
+            </button>
+            <button (click)="doSomething(product.id)"  class="btn btn-danger">
+                Cancella
+            </button>
+        </td>
+    </tr>
+  </tbody>
+</table>
