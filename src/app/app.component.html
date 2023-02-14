@@ -5,7 +5,8 @@
   <app-products-page/>
 </div>
 <div class="container-fluid" style="background-color:violet;">
-  <app-footer></app-footer>
+  <app-footer [text]="text"></app-footer>
+  <button (click)="changeText()">Change</button>
 </div>
 
 

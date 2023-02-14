@@ -10,16 +10,19 @@ import { ProductsService } from '../../services/products.service';
 export class ProductsPageComponent {
   products: Product[] | null = null;
   productsNotInStock: Product[] | null = null;
+  selectedProduct: Product | null = null;
   title = "Elenco Prodotti";
+  randomNumber = 0;
 
-  constructor() {
-    const service = new ProductsService();
+  constructor(private service: ProductsService) {
+    //const service = new ProductsService();
     this.products = service.getProducts();
     this.productsNotInStock = service.getProductsToBeReordered();
+    this.randomNumber = service.getRandomNumber();
   }
 
   onDetails(selectedProduct: Product) {
-    alert(selectedProduct.name);
+    this.selectedProduct = selectedProduct;
   }
 
   onRemove(selectedProduct: Product) {
@@ -34,5 +37,8 @@ export class ProductsPageComponent {
     this.productsNotInStock = newData;
   }
 
+  seeProducts() {
+    this.selectedProduct = null;
+  }
 
 }
