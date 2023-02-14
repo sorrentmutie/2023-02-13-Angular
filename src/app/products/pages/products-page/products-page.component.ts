@@ -18,7 +18,6 @@ export class ProductsPageComponent {
     this.productsNotInStock = service.getProductsToBeReordered();
   }
 
-
   onDetails(selectedProduct: Product) {
     alert(selectedProduct.name);
   }
