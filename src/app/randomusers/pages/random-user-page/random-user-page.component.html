@@ -1,0 +1,12 @@
+<div *ngIf="(users | async) as response">
+    <div *ngFor="let result of response">
+
+        <div class="card text-white bg-warning mb-3" style="max-width: 20rem;">
+            <div class="card-header">{{result.name.first}} {{result.name.last}}</div>
+            <div class="card-body">
+              <h4 class="card-title">{{result.email}}</h4>
+              <img src="{{result.picture.large}}">
+            </div>
+        </div>
+    </div>
+</div>

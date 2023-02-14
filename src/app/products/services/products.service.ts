@@ -1,5 +1,7 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { provideRouter } from "@angular/router";
+import { Observable, of } from "rxjs";
+import { environment } from "src/environments/environment.development";
 import { Product } from "../models/product";
 import { DiscountService } from "./discount.service";
 import { SecondService } from "./second.service";
@@ -8,20 +10,17 @@ import { SecondService } from "./second.service";
   providedIn: 'root'
 })
 export class ProductsService {
-
   private randomNumber = 0;
   salute: string = "";
-
   constructor(private secondService: SecondService,
-    private discountService: DiscountService) {
+              private discountService: DiscountService,
+              private httpClient: HttpClient) {
      this.randomNumber = Math.random();
      this.salute = this.secondService.doSomething();
   }
-
   getRandomNumber(): number {
     return this.randomNumber;
   }
-
   getProducts(): Product[] {
     const products: Product[] = [
       {id: 1, name : "Frigorifero", availability: true,
@@ -33,7 +32,6 @@ export class ProductsService {
     ];
     return products;
   }
-
   getProductsToBeReordered(): Product[] {
     return [
       {id: 3, name : "Lampada", availability: true,
@@ -43,5 +41,12 @@ export class ProductsService {
 
     ]
   }
+  getProductsAsObservable(): Observable<Product[]> {
+    return of(this.getProducts());
+  }
+  getProductsFromAPI(): Observable<Product[]> {
+    return this.httpClient.get<Product[]>(environment.apiUrl);
+  }
+
 
 }

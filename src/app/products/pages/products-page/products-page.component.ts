@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Product } from '../../models/product';
 import { ProductsService } from '../../services/products.service';
 
@@ -7,18 +8,24 @@ import { ProductsService } from '../../services/products.service';
   templateUrl: './products-page.component.html',
   styleUrls: ['./products-page.component.css']
 })
-export class ProductsPageComponent {
+export class ProductsPageComponent implements OnDestroy {
   products: Product[] | null = null;
   productsNotInStock: Product[] | null = null;
   selectedProduct: Product | null = null;
   title = "Elenco Prodotti";
   randomNumber = 0;
+  subscription: Subscription | null = null;
 
   constructor(private service: ProductsService) {
     //const service = new ProductsService();
-    this.products = service.getProducts();
+    this.subscription = service.getProductsFromAPI().subscribe( prodotti => {
+      this.products = prodotti
+    });
     this.productsNotInStock = service.getProductsToBeReordered();
     this.randomNumber = service.getRandomNumber();
+  }
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
   }
 
   onDetails(selectedProduct: Product) {
