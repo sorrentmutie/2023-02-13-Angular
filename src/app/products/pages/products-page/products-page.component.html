@@ -4,12 +4,12 @@
 {{randomNumber}}
 
 <p>{{title}}</p>
-<div *ngIf="products && products.length > 0 && selectedProduct === null; else noProducts">
+<div *ngIf="products && products.length > 0 ; else noProducts">
     <p>Ci sono {{products.length}} prodotti</p>
     <app-products-table [products]="products"  (emitter)="onDetails($event)" ></app-products-table>
 </div>
 
-<app-product-details (emitter)="seeProducts()"  [product]="selectedProduct"></app-product-details>
+<!-- <app-product-details (emitter)="seeProducts()"  [product]="selectedProduct"></app-product-details> -->
 
 
 <!-- <app-products-table [products]="productsNotInStock"

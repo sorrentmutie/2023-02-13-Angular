@@ -1,4 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Product } from '../../models/product';
 import { ProductsService } from '../../services/products.service';
@@ -11,12 +12,12 @@ import { ProductsService } from '../../services/products.service';
 export class ProductsPageComponent implements OnDestroy {
   products: Product[] | null = null;
   productsNotInStock: Product[] | null = null;
-  selectedProduct: Product | null = null;
+  //selectedProduct: Product | null = null;
   title = "Elenco Prodotti";
   randomNumber = 0;
   subscription: Subscription | null = null;
 
-  constructor(private service: ProductsService) {
+  constructor(private router:Router, private service: ProductsService) {
     //const service = new ProductsService();
     this.subscription = service.getProductsFromAPI().subscribe( prodotti => {
       this.products = prodotti
@@ -29,7 +30,8 @@ export class ProductsPageComponent implements OnDestroy {
   }
 
   onDetails(selectedProduct: Product) {
-    this.selectedProduct = selectedProduct;
+   // this.selectedProduct = selectedProduct;
+   this.router.navigate(['/products', selectedProduct.id]);
   }
 
   onRemove(selectedProduct: Product) {
@@ -44,8 +46,8 @@ export class ProductsPageComponent implements OnDestroy {
     this.productsNotInStock = newData;
   }
 
-  seeProducts() {
-    this.selectedProduct = null;
-  }
+  // seeProducts() {
+   // this.selectedProduct = null;
+  //}
 
 }

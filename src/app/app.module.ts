@@ -14,12 +14,13 @@ import { FormatAddressPipe } from './shared/pipes/format-address.pipe';
 import { ProductDetailsComponent } from './products/components/product-details/product-details.component';
 import { RandomUserPageComponent } from './randomusers/pages/random-user-page/random-user-page.component';
 import { ReqresComponent } from './reqres/reqres/reqres.component';
+import { NotFoundComponent } from './shared/not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductsPageComponent,
-    MenuComponent, FooterComponent, ProductsHeaderComponent, ProductsTableComponent, FormatProductNamePipe, FormatAddressPipe, ProductDetailsComponent, RandomUserPageComponent, ReqresComponent
+    MenuComponent, FooterComponent, ProductsHeaderComponent, ProductsTableComponent, FormatProductNamePipe, FormatAddressPipe, ProductDetailsComponent, RandomUserPageComponent, ReqresComponent, NotFoundComponent
   ],
   imports: [
     BrowserModule,

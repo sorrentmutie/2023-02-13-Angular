@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable, of } from "rxjs";
+import { Observable, ObservedValueOf, of } from "rxjs";
 import { environment } from "src/environments/environment.development";
 import { Product } from "../models/product";
 import { DiscountService } from "./discount.service";
@@ -47,6 +47,10 @@ export class ProductsService {
   getProductsFromAPI(): Observable<Product[]> {
     return this.httpClient.get<Product[]>(environment.apiUrl);
   }
+
+  getProductById(id: number): Observable<Product> {
+    return this.httpClient.get<Product>(`${environment.apiUrl}/${id}`);
+  } 
 
 
 }
