@@ -1,0 +1,37 @@
+<p>reactive-page works!</p>
+<!-- <input [formControl]="myFormControl">
+
+{{myFormControl.value}}
+
+{{myFormControl.valueChanges | async}} -->
+
+<div *ngIf="myForm">
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input id="name" class="form-control" formControlName="name">
+            <div *ngIf="name && name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+                <div *ngIf="name && name.errors && name.errors['required']" >Il nome è obbligatorio</div>
+                <div *ngIf="name && name.errors && name.errors['minlength']">La lunghezza minima è di 5 caratteri</div>
+                <div *ngIf="name && name.errors && name.errors['myValidator']">Il nome deve cominciare con la lettera s</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="alias">Alias</label>
+            <input id="alias" class="form-control" formControlName="alias">
+        </div>
+
+        <div class="form-group">
+            <label for="powers">Power</label>
+            <select id="powers" formControlName="powers" class="form-control" >
+                <option *ngFor="let p of superpowers" [value]="p">{{p}}</option>
+            </select>
+        </div>
+
+        <button [disabled]="myForm.invalid" type="submit" class="btn btn-danger">OK</button>
+    </form>    
+</div>
+
+

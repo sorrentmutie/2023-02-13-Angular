@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { GotPageComponent } from './got/component/got-page/got-page.component';
+import { ReactivePageComponent } from './hero-reactive/reactive-page/reactive-page.component';
 import { HeroFormComponent } from './hero/components/hero-form/hero-form.component';
 import { ProductDetailsComponent } from './products/components/product-details/product-details.component';
 import { ProductsPageComponent } from './products/pages/products-page/products-page.component';
@@ -12,8 +14,11 @@ const routes: Routes = [
  {path: "products/:id", component: ProductDetailsComponent},
  {path: "randomuser", component: RandomUserPageComponent},
  {path: "reqres", component: ReqresComponent},
+ {path: "reactive", component: ReactivePageComponent},
  {path: "hero", component: HeroFormComponent},
- {path: "", redirectTo: "hero", pathMatch:"full"},
+ {path: "got", component: GotPageComponent},
+ 
+ {path: "", redirectTo: "got", pathMatch:"full"},
  {path: "**", component: NotFoundComponent }
 ];
 

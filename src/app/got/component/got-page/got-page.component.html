@@ -1,0 +1,15 @@
+<p>got-page works!</p>
+
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <select  class="form-control" formControlName="season" >
+        <option *ngFor="let p of seasons | async" [value]="p.id">{{p.name}}</option>
+    </select>
+    
+    <select class="form-control" formControlName="episode">
+        <option>seleziona un episodio </option>
+        <option *ngFor="let p of episodes | async" [value]="p.id">{{p.episodeTitle}}</option>
+    </select>
+    
+    <input *ngIf="checkScene" formControlName="scene">
+    <button [disabled]="formGroup.invalid" type="submit" class="btn btn-success" style="margin: 10px;">Submit</button>
+</form>

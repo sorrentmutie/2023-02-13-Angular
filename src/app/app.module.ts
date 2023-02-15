@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+
+
 import { AppComponent } from './app.component';
 import { ProductsPageComponent } from './products/pages/products-page/products-page.component';
 import { MenuComponent } from './shared/menu/menu.component';
@@ -16,17 +18,20 @@ import { RandomUserPageComponent } from './randomusers/pages/random-user-page/ra
 import { ReqresComponent } from './reqres/reqres/reqres.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { HeroFormComponent } from './hero/components/hero-form/hero-form.component';
+import { ReactivePageComponent } from './hero-reactive/reactive-page/reactive-page.component';
+import { GotPageComponent } from './got/component/got-page/got-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductsPageComponent,
-    MenuComponent, FooterComponent, ProductsHeaderComponent, ProductsTableComponent, FormatProductNamePipe, FormatAddressPipe, ProductDetailsComponent, RandomUserPageComponent, ReqresComponent, NotFoundComponent, HeroFormComponent
+    MenuComponent, FooterComponent, ProductsHeaderComponent, ProductsTableComponent, FormatProductNamePipe, FormatAddressPipe, ProductDetailsComponent, RandomUserPageComponent, ReqresComponent, NotFoundComponent, HeroFormComponent, ReactivePageComponent, GotPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [],
