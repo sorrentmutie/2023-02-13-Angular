@@ -1,0 +1,40 @@
+<!-- <input #myInput (keyup)="onKeyUp(myInput.value)"> -->
+
+<h3>Il form dell'eroe</h3>
+
+<form  #myForm="ngForm" (ngSubmit)="onSubmit()">
+
+  <div class="form-group">
+    <label for="nome">Nome</label>
+    <input #myName="ngModel"   id="nome" class="form-control" [(ngModel)]="hero!.name"  
+      name="nome" required  minlength="5" >
+ 
+    <div *ngIf="myName.invalid && (myName.dirty || myName.touched)" class="alert alert-danger">
+        <div *ngIf="myName && myName.errors && myName.errors['required']" >Il nome è obbligatorio</div>
+        <div *ngIf="myName && myName.errors && myName.errors['minlength']">La lunghezza minima è di 5 caratteri</div>
+    </div>
+   
+
+    <!-- <div [hidden]="myName.valid || myName.pristine"  class="alert alert-danger">Il nome è obbligatorio</div> -->
+
+</div>
+
+  <div class="form-group">
+    <label for="alias">Alias</label>
+    <input id="alias" class="form-control"  [(ngModel)]="hero!.alias" name="alias">
+  </div>
+
+  <div class="form-group">
+    <label for="powers">Choose a power</label>
+    <select id="powers" class="form-control" [(ngModel)]="hero!.superpower" name="powers">
+        <option *ngFor="let p of powers" [value]="p">{{p}}</option>
+    </select>
+  </div>
+
+
+
+
+  <button [disabled]="myForm.invalid" type="submit" class="btn btn-success" style="margin: 10px;">Submit</button>
+  <button type="button" (click)="reset();myForm.reset()">Reset</button>
+
+</form>

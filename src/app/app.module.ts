@@ -15,12 +15,13 @@ import { ProductDetailsComponent } from './products/components/product-details/p
 import { RandomUserPageComponent } from './randomusers/pages/random-user-page/random-user-page.component';
 import { ReqresComponent } from './reqres/reqres/reqres.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
+import { HeroFormComponent } from './hero/components/hero-form/hero-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductsPageComponent,
-    MenuComponent, FooterComponent, ProductsHeaderComponent, ProductsTableComponent, FormatProductNamePipe, FormatAddressPipe, ProductDetailsComponent, RandomUserPageComponent, ReqresComponent, NotFoundComponent
+    MenuComponent, FooterComponent, ProductsHeaderComponent, ProductsTableComponent, FormatProductNamePipe, FormatAddressPipe, ProductDetailsComponent, RandomUserPageComponent, ReqresComponent, NotFoundComponent, HeroFormComponent
   ],
   imports: [
     BrowserModule,
