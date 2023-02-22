@@ -1,0 +1,8 @@
+<p>login works!</p>
+<button class="btn btn-info" (click)="login()">Random Login</button>
+<button class="btn btn-danger" (click)="stop()">Stop</button>
+
+<div *ngFor="let customer of customers">
+  <p>{{customer.name}} {{customer.city}}</p>
+</div>
+{{loggedIn}}

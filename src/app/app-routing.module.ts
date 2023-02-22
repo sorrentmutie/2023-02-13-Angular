@@ -3,22 +3,24 @@ import { RouterModule, Routes } from '@angular/router';
 import { GotPageComponent } from './got/component/got-page/got-page.component';
 import { ReactivePageComponent } from './hero-reactive/reactive-page/reactive-page.component';
 import { HeroFormComponent } from './hero/components/hero-form/hero-form.component';
+import { LoginComponent } from './login/components/login/login.component';
 import { ProductDetailsComponent } from './products/components/product-details/product-details.component';
 import { ProductsPageComponent } from './products/pages/products-page/products-page.component';
 import { RandomUserPageComponent } from './randomusers/pages/random-user-page/random-user-page.component';
 import { ReqresComponent } from './reqres/reqres/reqres.component';
+import { FirstGuard } from './shared/guards/first.guard';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 
 const routes: Routes = [
  {path: "products", component: ProductsPageComponent},
  {path: "products/:id", component: ProductDetailsComponent},
- {path: "randomuser", component: RandomUserPageComponent},
+ {path: "randomuser", component: RandomUserPageComponent, canActivate: [FirstGuard]},
  {path: "reqres", component: ReqresComponent},
  {path: "reactive", component: ReactivePageComponent},
  {path: "hero", component: HeroFormComponent},
  {path: "got", component: GotPageComponent},
- 
- {path: "", redirectTo: "got", pathMatch:"full"},
+ {path: "login", component: LoginComponent},
+ {path: "", redirectTo: "login", pathMatch:"full"},
  {path: "**", component: NotFoundComponent }
 ];
 

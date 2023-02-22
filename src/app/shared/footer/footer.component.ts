@@ -1,6 +1,8 @@
 import { Component, Input, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
 import { filter, map, of, Subscription } from 'rxjs';
 import { ProductsService } from 'src/app/products/services/products.service';
+import { Customer } from 'src/app/subjects/models/customer';
+import { SubjectService } from 'src/app/subjects/services/subject.service';
 import { Order } from '../order';
 
 @Component({
@@ -13,8 +15,15 @@ export class FooterComponent implements OnChanges,
                                         OnDestroy {
   @Input() text:string = ""; 
   private subscription: Subscription | null = null;
+  lastCustomer : Customer | null = null;
 
-  constructor(public service: ProductsService) {}
+  constructor(public service: ProductsService, private subService: SubjectService) {
+
+    this.subService.subjectsObservable$?.subscribe(
+      newcustomer => this.lastCustomer = newcustomer
+    );
+
+  }
   ngOnDestroy(): void {
     this.subscription?.unsubscribe();
   }
